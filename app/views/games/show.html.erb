@@ -1,0 +1,10 @@
+<h1><%= @game.description %></h1>
+<p><%= @scene.description %></p>
+<% @scene.options.each do |option| %>
+  <div>
+    <%= form_tag game_path(@game) do %>
+      <%= hidden_field_tag :scene_id, option.forward_scene_id %>
+      <%= submit_tag option.description %>
+    <% end %>
+  </div>
+<% end %>

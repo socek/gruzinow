@@ -1,5 +1,9 @@
 Gruzinow::Application.routes.draw do
-  resources :games, only: :index
+  resources :games, only: [:index, :show] do
+    member do
+      post :show
+    end
+  end
   root to: "games#index"
 
   # The priority is based upon order of creation: first created -> highest priority.

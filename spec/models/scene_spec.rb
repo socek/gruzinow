@@ -18,4 +18,13 @@ describe Scene do
     scene.invalid?.should be_true
   end
 
+  it "should have access to all it's options" do
+    game = Game.create(description: "game description")
+    scene = Scene.create(description: "some text", game: game)
+    scene_2 = Scene.create(description: "second scene", game:game)
+    option = Option.create(description: "my first option", current_scene:scene, forward_scene:scene_2)
+
+    scene.options.should == [option]
+  end
+
 end
